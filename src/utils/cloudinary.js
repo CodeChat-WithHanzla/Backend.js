@@ -15,7 +15,8 @@ try {
     resource_type: "auto"
   })
   // File has been uploaded successfully !
-  console.log("File has been uploaded successfully !",response.url);
+  // console.log("File has been uploaded successfully !",response.url);
+  fs.unlinkSync(localFilePath)
   return response;
 } catch (error) {
   // remove the locally saved temporary file as upload operation goes failed !

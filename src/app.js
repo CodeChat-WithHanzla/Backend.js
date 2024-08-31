@@ -14,7 +14,7 @@ app.use(express.urlencoded({extended:true,limit:"16kb"}))
 app.use(express.static("public"))
 app.use(cookieParser())
 
-// app.get('/',(req,res)=>res.send("Welcome to Api"))
+app.get('/',(req,res)=>res.send("Welcome to Api"))
 
 // routes import
 import userRouter from './routes/user.routes.js'
