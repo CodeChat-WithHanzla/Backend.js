@@ -193,4 +193,28 @@ const getCurrentUser = asyncHandler(async (req, res) => {
   return res.status(200).json(200, req.user, "Current User found successfully");
 });
 
-export { registerUser, loginUser, logoutUser, refreshAccessToken };
+const updateAccountDetails = asyncHandler(async (req, res) => {
+  const { fullName, email } = req.body;
+  if (!fullName || !email) throw new ApiError(400, "All field required");
+  const user = User.findByIdAndUpdate(
+    req.user._id,
+    {
+      $set: {
+        fullName,
+        email,
+      },
+    },
+    { new: true },
+  ).select("-password");
+  return res
+    .status(200)
+    .json(200, user, "Account details updated Successfully");
+});
+
+export {
+  registerUser,
+  loginUser,
+  logoutUser,
+  refreshAccessToken,
+  updateAccountDetails,
+};
