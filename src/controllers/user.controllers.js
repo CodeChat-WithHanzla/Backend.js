@@ -190,7 +190,9 @@ const changeCurrentPassword = asyncHandler(async (req, res) => {
 });
 
 const getCurrentUser = asyncHandler(async (req, res) => {
-  return res.status(200).json(200, req.user, "Current User found successfully");
+  return res
+    .status(200)
+    .json(new ApiResponse(200, req.user, "Current User found successfully"));
 });
 
 const updateAccountDetails = asyncHandler(async (req, res) => {
@@ -208,7 +210,7 @@ const updateAccountDetails = asyncHandler(async (req, res) => {
   ).select("-password");
   return res
     .status(200)
-    .json(200, user, "Account details updated Successfully");
+    .json(new ApiResponse(200, user, "Account details updated Successfully"));
 });
 
 const updateUserAvatar = asyncHandler(async (req, res) => {
@@ -226,7 +228,9 @@ const updateUserAvatar = asyncHandler(async (req, res) => {
     },
     { new: true },
   ).select("-password");
-  return res.status(200).json(200, user, "Avatar-Image updated successfully");
+  return res
+    .status(200)
+    .json(new ApiResponse(200, user, "Avatar-Image updated successfully"));
 });
 
 const updateCoverImage = asyncHandler(async (req, res) => {
@@ -245,7 +249,9 @@ const updateCoverImage = asyncHandler(async (req, res) => {
     },
     { new: true },
   ).select("-password");
-  return res.status(200).json(200, user, "Cover-Image updated successfully");
+  return res
+    .status(200)
+    .json(new ApiResponse(200, user, "Cover-Image updated successfully"));
 });
 
 export {
